@@ -7,11 +7,11 @@ WORKDIR /app
 # Install git
 RUN apt-get update && apt-get install -y git
 
-# Define build arguments for GitHub credentials
-ARG GITHUB_TOKEN
+# Clone the frontend_dev branch of your repository
+RUN git clone --single-branch --branch frontend_dev https://github.com/Rasmus-BK-Nielsen/DevOps_Demo.git .
 
-# Clone the frontend_dev branch of your repository using the token
-RUN git clone --single-branch --branch frontend_dev https://${GITHUB_TOKEN}:x-oauth-basic@github.com/Rasmus-BK-Nielsen/DevOps_Demo.git .
+# Change working directory to the cloned repository
+WORKDIR /app/DevOps_Demo/devops_frontend
 
 # Install dependencies
 RUN npm install
