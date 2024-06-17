@@ -15,12 +15,12 @@ WORKDIR /app/devops_backend
 RUN dotnet restore
 
 # Build the project
-RUN dotnet publish -c Release -o out
+RUN dotnet publish -c Release -o /app/out
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build-env /app/devops_backend/out .
+COPY --from=build-env /app/out .
 
 # Expose port
 EXPOSE 5000
