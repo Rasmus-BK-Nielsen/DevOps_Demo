@@ -1,0 +1,35 @@
+# Use the official Node.js image based on Ubuntu
+FROM node:14 AS build
+
+# Set working directory
+WORKDIR /app
+
+# Install git
+RUN apt-get update && apt-get install -y git
+
+# Clone the main branch of your repository
+RUN git clone --single-branch --branch main https://github.com/Rasmus-BK-Nielsen/DevOps_Demo.git .
+
+# Install dependencies
+RUN npm install
+
+# Build the application
+RUN npm run build
+
+# Use the official Nginx image based on Ubuntu
+FROM nginx:latest
+
+# Copy the built app from the previous stage
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Copy the startup script
+COPY startup_production.sh /usr/share/nginx/startup_production.sh
+
+# Make the startup script executable
+RUN chmod +x /usr/share/nginx/startup_production.sh
+
+# Expose the port nginx is running on
+EXPOSE 80
+
+# Start nginx server with the startup script
+CMD ["/bin/bash", "/usr/share/nginx/startup_production.sh"]
