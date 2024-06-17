@@ -1,0 +1,29 @@
+# Use the official .NET SDK image
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
+WORKDIR /app
+
+# Install git
+RUN apt-get update && apt-get install -y git
+
+# Clone the main branch of your repository
+RUN git clone --single-branch --branch main https://github.com/Rasmus-BK-Nielsen/DevOps_Demo.git .
+
+# Change working directory to the backend directory
+WORKDIR /app/devops_backend
+
+# Restore dependencies
+RUN dotnet restore
+
+# Build the project
+RUN dotnet publish -c Release -o out
+
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:5.0
+WORKDIR /app
+COPY --from=build-env /app/devops_backend/out .
+
+# Expose port
+EXPOSE 5000
+
+# Entry point
+ENTRYPOINT ["dotnet", "Backend.dll"]
