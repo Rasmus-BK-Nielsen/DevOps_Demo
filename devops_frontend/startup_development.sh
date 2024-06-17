@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Pull the latest changes from the repository
-cd /app/DevOps_Demo
+cd /app
 git pull origin frontend_dev
 
 # Install any new dependencies
