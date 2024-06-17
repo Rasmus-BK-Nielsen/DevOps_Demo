@@ -4,13 +4,13 @@ FROM node:14
 # Set working directory
 WORKDIR /app
 
-# Install git
+# Install git and other necessary packages
 RUN apt-get update && apt-get install -y git
 
 # Clone the frontend_dev branch of your repository
 RUN git clone --single-branch --branch frontend_dev https://github.com/Rasmus-BK-Nielsen/DevOps_Demo.git .
 
-# Change working directory to the cloned repository's frontend directory
+# Change working directory to the cloned repository
 WORKDIR /app/devops_frontend
 
 # Install npm dependencies
