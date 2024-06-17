@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y git
 # Clone the frontend_dev branch of your repository
 RUN git clone --single-branch --branch frontend_dev https://github.com/Rasmus-BK-Nielsen/DevOps_Demo.git .
 
-# Change working directory to the cloned repository
+# Change working directory to the frontend directory inside the cloned repository
 WORKDIR /app/devops_frontend
 
 # Install npm dependencies
