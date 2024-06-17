@@ -30,7 +30,8 @@ This runs the Docker image of the same name, and opens up port 80 for acces
 docker build -t my-app-development -f Dockerfile.Dev .  
 This builds the development container, and manes it: my-app-development  
 
-docker run -p 3000:3000 -v ${PWD}:/app --name my-app-development-container my-app-development  
-This runs the Docker image. The ${PWD}:/app variable makes the host machines directory accessable  
-through the container, such that any changes to the current directory, is visible inside the container.  
+docker run -p 3000:3000 -v ${PWD}:/app --name my-app-development-container  
+my-app-development This runs the Docker image. The ${PWD}:/app variable  
+makes the host machines directory accessable through the container, such  
+that any changes to the current directory, is visible inside the container, and vice versa.  
 
