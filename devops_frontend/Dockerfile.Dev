@@ -1,0 +1,26 @@
+# Use the official Node.js image based on Ubuntu
+FROM node:14
+
+# Set working directory
+WORKDIR /app
+
+# Install git
+RUN apt-get update && apt-get install -y git
+
+# Clone the frontend_dev branch of your repository
+RUN git clone --single-branch --branch frontend_dev https://github.com/Rasmus-BK-Nielsen/DevOps_Demo.git .
+
+# Install dependencies
+RUN npm install
+
+# Copy the startup script
+COPY startup_development.sh /app/startup_development.sh
+
+# Make the startup script executable
+RUN chmod +x /app/startup_development.sh
+
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Start the development server with the startup script
+CMD ["/bin/bash", "/app/startup_development.sh"]
