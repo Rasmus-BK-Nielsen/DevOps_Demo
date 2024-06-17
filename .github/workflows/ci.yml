@@ -1,0 +1,45 @@
+name: CI
+
+# Trigger the workflow on push to the main branch and on pull requests to the main branch
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Node.js and run JavaScript tests
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run JavaScript tests
+        run: npm test
+
+      # Set up .NET and run C# tests
+      #- name: Set up .NET Core
+      #  uses: actions/setup-dotnet@v1
+      #  with:
+      #    dotnet-version: '5.0.x'
+
+      #- name: Restore dependencies
+      #  run: dotnet restore ./path/to/your/csharp/project.sln
+
+      #- name: Build
+      #  run: dotnet build ./path/to/your/csharp/project.sln --no-restore
+
+      #- name: Run C# tests
+      #  run: dotnet test ./path/to/your/csharp/project.sln --no-build --verbosity normal
