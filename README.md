@@ -1,7 +1,7 @@
-### DevOps_Demo
+# DevOps_Demo
 
 ## Creating the app, step by step:
-# Setting up git
+### Setting up git
 echo "# DevOps_Demo" >> README.md
 git init
 git add README.md
