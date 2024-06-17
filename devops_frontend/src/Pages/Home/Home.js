@@ -7,6 +7,7 @@ export default function Home() {
                <p>Created by Rasmus B.K. Nielsen - 313614</p>
                <p>This is a project created to demonstrate the tools learned through the DevOps <br />
                course at VIA University College</p>
+               <p>this is a change</p>
           </div>
      );
 }
