@@ -17,6 +17,6 @@ npx create-react-app devops_frontend
 ### Creating Dockerfiles for frontend
 Created two files .Dev for development and .Prod for deployment  
 Both files are accompanied with a startup file  
-which is made executeable with: chmod +x filename.sh  
+which is made executeable with: chmod +x filename.sh (cd devops_frontend)  
 to make the containers synchronised with gitHub
 
