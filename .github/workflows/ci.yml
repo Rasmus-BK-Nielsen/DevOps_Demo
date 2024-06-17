@@ -33,17 +33,17 @@ jobs:
            cd devops_frontend
            npm test
 
-      # Set up .NET and run C# tests
-      #- name: Set up .NET Core
-      #  uses: actions/setup-dotnet@v1
-      #  with:
-      #    dotnet-version: '5.0.x'
+      # Set up .NET and run C# tests for backend
+       - name: Set up .NET Core
+         uses: actions/setup-dotnet@v1
+         with:
+           dotnet-version: '5.0.x'
 
-      #- name: Restore dependencies
-      #  run: dotnet restore ./path/to/your/csharp/project.sln
+       - name: Restore backend dependencies
+         run: dotnet restore ./devops_backend/devops_backend.csproj
 
-      #- name: Build
-      #  run: dotnet build ./path/to/your/csharp/project.sln --no-restore
+       - name: Build backend
+         run: dotnet build ./devops_backend/devops_backend.csproj --no-restore
 
-      #- name: Run C# tests
-      #  run: dotnet test ./path/to/your/csharp/project.sln --no-build --verbosity normal
+       - name: Run backend tests
+         run: dotnet test ./devops_backend/devops_backend.csproj --no-build --verbosity normal
