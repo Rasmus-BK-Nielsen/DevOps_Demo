@@ -4,5 +4,5 @@
 cd /usr/share/nginx/html
 git pull origin main
 
-# Start Nginx
+# Start Nginx and keep it running in the foreground
 nginx -g 'daemon off;'
