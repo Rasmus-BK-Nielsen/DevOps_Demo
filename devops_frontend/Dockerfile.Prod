@@ -10,6 +10,9 @@ RUN apt-get update && apt-get install -y git
 # Clone the main branch of your repository
 RUN git clone --single-branch --branch main https://github.com/Rasmus-BK-Nielsen/DevOps_Demo.git .
 
+# Change working directory to the cloned repository
+WORKDIR /app/DevOps_Demo/devops_frontend
+
 # Install dependencies
 RUN npm install
 
@@ -20,7 +23,10 @@ RUN npm run build
 FROM nginx:latest
 
 # Copy the built app from the previous stage
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/DevOps_Demo/devops_frontend/build /usr/share/nginx/html
+
+# Copy the Nginx configuration file
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy the startup script
 COPY startup_production.sh /usr/share/nginx/startup_production.sh
