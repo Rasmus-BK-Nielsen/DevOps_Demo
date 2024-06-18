@@ -18,7 +18,7 @@ export default function App() {
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/question1">Question 1</Link></li>
+            <li><Link to="/question1">Whatever</Link></li>
             <li><Link to="/question2">Question 2</Link></li>
             <li><Link to="/question3">Question 3</Link></li>
             <li><Link to="/question4">Question 4</Link></li>
