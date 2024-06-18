@@ -15,5 +15,6 @@ spec:
       containers:
       - name: frontend
         image: my-app-production
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
