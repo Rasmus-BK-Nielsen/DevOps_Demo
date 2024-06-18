@@ -35,3 +35,9 @@ This runs the Docker image. The ${PWD}:/app variable
 makes the host machines directory accessable through the container, such  
 that any changes to the current directory, is visible inside the container, and vice versa.  
 
+docker build -t my-backend-development -f devops_backend/Dockerfile.Dev devops_backend  
+docker run -d -p 5000:5000 --name my-backend-development-container my-backend-development  
+
+docker build -t my-backend-production -f devops_backend/Dockerfile.Prod devops_backend  
+docker run -d -p 5000:5000 --name my-backend-production-container my-backend-production  
+
