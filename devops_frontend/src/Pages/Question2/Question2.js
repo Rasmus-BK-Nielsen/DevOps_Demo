@@ -7,7 +7,7 @@ export default function Question2() {
             <h2>Git Overview</h2>
             
             <h3>Git in General</h3>
-            <img src={gitImage} alt="Git Workflow" style={{ width: '100%', height: 'auto', borderRadius: '5px' }} />
+            <img src={gitImage} alt="Git Workflow" />
             <p>
               <strong>Topic 1: Git Locally vs. Globally</strong>
               <br />
