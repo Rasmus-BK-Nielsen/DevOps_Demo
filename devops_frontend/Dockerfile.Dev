@@ -16,6 +16,9 @@ RUN npm install
 # Copy the startup script
 COPY startup_development.sh /app/startup_development.sh
 
+# Ensure startup script is Unix format
+RUN sed -i 's/\r$//' startup_development.sh
+
 # Make the startup script executable
 RUN chmod +x /app/startup_development.sh
 
